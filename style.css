@@ -42,15 +42,3 @@ input {
 #drop-target {
   margin-top: 20px;
 }
-
-.draggable {
-  padding: 4px;
-  margin: 2px;
-  background-color: white;
-  border-radius: 3px;
-  cursor: move;
-}
-
-.draggable.dragging {
-  opacity: 0.5;
-}/*# sourceMappingURL=style.css.map */
