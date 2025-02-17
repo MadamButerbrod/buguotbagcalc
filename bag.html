@@ -8,15 +8,21 @@
     <title>Išvykimo krepšys</title>
 </head>
 <body>
-    <div class="container" id="outside">
-        <p class="draggable" id="water500" data-weight="500" draggable="true">💧 0,5 l vandens buteliukas (500g)</p>
-        <p class="draggable" id="candy" data-weight="10" draggable="true">🍬 ledinukas (10g)</p>
-        <p class="draggable" id="banknote" data-weight="1" draggable="true">💶 50 eurų banknotas (1g)</p>
-        <p class="draggable" id="jeans" data-weight="650" draggable="true">👖 džinsai (650g)</p>
-        <p class="draggable" id="sleeping-bag" data-weight="1750" draggable="true">💤 miegmaišis (1750g)</p>
+    <div class="container" id="drop-source">
+        <p class="item" id="water500" data-weight="500">💧 0,5 l vandens buteliukas (500g)</p>
+        <p class="item" id="banknote" data-weight="1">💶 50 eurų banknotas (1g)</p>
+        <p class="item" id="jeans" data-weight="650">👖 džinsai (650g)</p>
+      </div>
+      <div class="inventory-dialog">
+        <p class="dialog-type">Perkelti į kuprinę</p>
+        <p class="item" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
+        <button>+</button>
+        <input type="number">
+        <button>-</button>
+        <button>Perkelti</button>
       </div>
       <div class="container" id="drop-target">
-        In the bag
+        <p class="item" id="sleeping-bag" data-weight="1750">💤 miegmaišis (1750g)</p>
       </div>
 </body>
 </html>
