@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
-    <title>Išvykimko krepšio talpos skaičiuoklė</title>
+    <script src="bag.js" defer></script>
+    <title>Išvykimo krepšys</title>
 </head>
 <body>
-    <label for="height">Žmogaus ūgis metrais</label>
-    <input type="text" name="hight" id="height">
-    <label for="strengh">Įvertinkite savo fizines galimybes, kur 1 - ribotas mobilumas, 10 - profesionalaus atleto fizinio pasirengimo lygis</label>
-    <input type="text" name="strengh" id="strengh">
-    <div id="volume">0 litrų kuprinė</div>   
+    <div class="container" id="drop-source">
+        <p class="item" id="water500" data-weight="500">💧 0,5 l vandens buteliukas (500g)</p>
+        <p class="item" id="banknote" data-weight="1">💶 50 eurų banknotas (1g)</p>
+        <p class="item" id="jeans" data-weight="650">👖 džinsai (650g)</p>
+      </div>
+      <div class="inventory-dialog">
+        <p class="dialog-type">Perkelti į kuprinę</p>
+        <p class="item" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
+        <button>+</button>
+        <input type="number">
+        <button>-</button>
+        <button>Perkelti</button>
+      </div>
+      <div class="container" id="drop-target">
+        <p class="item" id="sleeping-bag" data-weight="1750">💤 miegmaišis (1750g)</p>
+      </div>
 </body>
 </html>
