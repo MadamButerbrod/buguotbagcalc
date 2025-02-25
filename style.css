@@ -48,6 +48,9 @@ body {
     line-height: 11.5cqh;
   }
 }
+#weight-counter.show-inventory {
+  display: none;
+}
 
 .separator {
   border-top: solid #6d6e70 1px;
@@ -60,6 +63,7 @@ body {
   height: 62vh;
   overflow-y: scroll;
   display: flex;
+  align-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -68,6 +72,9 @@ body {
   margin: 0.3rem;
 }
 
-.inventory-dialog {
+#inventory-dialog {
   display: none;
+}
+#inventory-dialog.show-dialog {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
