@@ -31,10 +31,10 @@ body {
   display: grid;
   grid-template-columns: 132fr 190fr 53fr;
   grid-template-rows: 203fr 240fr 142fr;
-  container: cont/size;
 }
 
 #weight-counter {
+  container: cont/size;
   grid-column: 2;
   grid-row: 2;
   color: white;
@@ -43,9 +43,9 @@ body {
   direction: rtl;
 }
 @container (height > 0px) {
-  #weight-counter {
-    font-size: 11.5cqh;
-    line-height: 11.5cqh;
+  #weight-counter p {
+    font-size: 35cqw;
+    line-height: 35cqw;
   }
 }
 #weight-counter.show-inventory {
