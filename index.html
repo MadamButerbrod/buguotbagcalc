@@ -20,22 +20,25 @@
     </div>
   </div>
   <div class="separator"></div>
-  <div id="source">
+  <div id="source" class="item-list">
     <p class="item" id="water500" data-weight="500">💧 0,5 l vandens buteliukas (500g)</p>
     <p class="item" id="banknote" data-weight="1">💶 50 eurų banknotas (1g)</p>
     <p class="item" id="jeans" data-weight="650">👖 džinsai (650g)</p>
     <p class="item" id="sleeping-bag" data-weight="1750">💤 miegmaišis (1750g)</p>
   </div>
-      <div id="inventory-dialog">
-        <img src="/images/close.svg" alt="x">
-        <p class="dialog-type in">Perkelti į kuprinę</p>
-        <p class="dialog-type out">Perkelti į kuprinę</p>
-        <p class="item" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
-        <button>+</button>
-        <input type="number" placeholder="0">
-        <button>-</button>
-        <button>Perkelti</button>
-      </div>
-
+  <div id="inventory" class="item-list out">
+    <p class="item" id="compass70" data-weight="70">🧭 kompasas (70g)</p>
+  </div>
+  <div id="inventory-dialog" class="show-dialog">
+    <img src="/images/close.svg" alt="x">
+    <p class="item" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
+    <button>+</button>
+    <input type="number" placeholder="0">
+    <button>-</button>
+    <button>
+      <p class="dialog-type in">Perkelti į kuprinę</p>
+      <p class="dialog-type out">Išimti iš kuprinės</p>
+    </button>
+  </div>
 </body>
 </html>

@@ -58,10 +58,13 @@ body {
   margin-right: 19vw;
 }
 
-#source {
+.item-list {
   padding: 9vw;
   height: 62vh;
   overflow-y: scroll;
+}
+
+#source {
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
@@ -72,9 +75,24 @@ body {
   margin: 0.3rem;
 }
 
+#inventory {
+  display: none;
+}
+
 #inventory-dialog {
+  background-color: #ed1b2e;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 25vw);
+  height: calc(100% - 25vw);
   display: none;
 }
 #inventory-dialog.show-dialog {
   display: block;
+}
+#inventory-dialog.show-dialog .out {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
