@@ -70,7 +70,8 @@ body {
     display: none;
 }
 #inventory-dialog {
-    background-color: #ed1b2e;
+    background: rgb(237,27,46);
+    background: linear-gradient(146deg, rgba(237,27,46,1) 0%, rgba(255,82,99,1) 95%); 
     color: white;
     position: fixed;
     top: 50%;

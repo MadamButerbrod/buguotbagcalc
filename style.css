@@ -80,7 +80,8 @@ body {
 }
 
 #inventory-dialog {
-  background-color: #ed1b2e;
+  background: rgb(237, 27, 46);
+  background: linear-gradient(146deg, rgb(237, 27, 46) 0%, rgb(255, 82, 99) 95%);
   color: white;
   position: fixed;
   top: 50%;
