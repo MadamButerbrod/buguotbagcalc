@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.7.1.js" defer></script>
     <script src="script.js" defer></script>
     <title>Išvykimo krepšys</title>
 </head>
 <body>
   <div id="target-container">
+    <div id="target-dialog">
+      <img src="/images/close.svg" alt="x" class="close">
+    </div>
     <div id="target">
       <div id="weight-counter">
         <p>
@@ -20,7 +24,7 @@
     </div>
   </div>
   <div class="separator"></div>
-  <div id="source" class="item-list">
+  <div id="source" class="item-list show">
     <p class="item" id="water500" data-weight="500">💧 0,5 l vandens buteliukas (500g)</p>
     <p class="item" id="banknote" data-weight="1">💶 50 eurų banknotas (1g)</p>
     <p class="item" id="jeans" data-weight="650">👖 džinsai (650g)</p>
@@ -29,13 +33,13 @@
   <div id="inventory" class="item-list out">
     <p class="item" id="compass70" data-weight="70">🧭 kompasas (70g)</p>
   </div>
-  <div id="inventory-dialog" class="show-dialog">
-    <img src="/images/close.svg" alt="x">
-    <p class="item" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
-    <button>+</button>
-    <input type="number" placeholder="0">
-    <button>-</button>
-    <button>
+  <div id="inventory-dialog">
+    <img src="/images/close.svg" alt="x" class="close">
+    <p class="selection" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
+    <button id="minus"><img src="/images/minus.svg" alt="-"></button>
+    <input type="number" name="quantity" class="quantity" placeholder="0">
+    <button id="plus"><img src="/images/plus.svg" alt="+"></button>
+    <button class="submit-btn">
       <p class="dialog-type in">Perkelti į kuprinę</p>
       <p class="dialog-type out">Išimti iš kuprinės</p>
     </button>

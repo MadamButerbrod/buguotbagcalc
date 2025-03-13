@@ -14,14 +14,41 @@ body {
   color: #6d6e70;
 }
 
+.close {
+  cursor: pointer;
+}
+
 #target-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 38vh;
+  position: relative;
+}
+
+#target-dialog {
+  display: none;
+}
+#target-dialog.show {
+  position: absolute;
+  background-image: url("/images/inventory-dialog.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 75%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+#target-dialog.show .close {
+  height: 12.6%;
+  margin-top: 8%;
+  margin-right: 8%;
 }
 
 #target {
+  z-index: 1;
   height: 62%;
   aspect-ratio: 25/39;
   background-image: url("/images/backpack.svg");
@@ -31,6 +58,7 @@ body {
   display: grid;
   grid-template-columns: 132fr 190fr 53fr;
   grid-template-rows: 203fr 240fr 142fr;
+  cursor: pointer;
 }
 
 #weight-counter {
@@ -65,6 +93,9 @@ body {
 }
 
 #source {
+  display: none;
+}
+#source.show {
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
@@ -73,10 +104,16 @@ body {
 .item {
   padding: 0.3rem;
   margin: 0.3rem;
+  cursor: pointer;
 }
 
 #inventory {
   display: none;
+}
+#inventory.show {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
 }
 
 #inventory-dialog {
@@ -87,13 +124,76 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(100% - 25vw);
-  height: calc(100% - 25vw);
+  padding: 1rem;
   display: none;
 }
-#inventory-dialog.show-dialog {
+#inventory-dialog.show {
+  display: grid;
+  grid-template-areas: ". . close" "item item item" "minus quantity plus" "submit submit submit";
+  grid-template-columns: 1fr min-content 1fr;
+  justify-content: center;
+  align-content: center;
+}
+#inventory-dialog.show .close {
+  grid-area: close;
+  justify-self: end;
+}
+#inventory-dialog.show .selection {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  grid-area: item;
+  display: flex;
+  justify-content: center;
+  cursor: default;
+}
+#inventory-dialog.show #minus {
+  grid-area: minus;
+}
+#inventory-dialog.show .quantity {
+  grid-area: quantity;
+}
+#inventory-dialog.show #plus {
+  grid-area: plus;
+}
+#inventory-dialog.show .submit-btn {
   display: block;
+  grid-area: submit;
+  border: 0.13rem solid white;
+  color: white;
+  margin: 25px 0px;
 }
-#inventory-dialog.show-dialog .out {
+#inventory-dialog.show .out {
   display: none;
+}
+
+label {
+  display: block;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  grid-area: q-label;
+}
+
+input {
+  display: block;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  grid-area: quantity;
+}
+
+button {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  border-radius: 1.5rem;
+  transition: 100ms;
+}
+
+#plus, #minus {
+  width: calc(25px + 0.6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */
