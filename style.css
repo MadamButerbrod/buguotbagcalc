@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -39,7 +40,7 @@ body {
   aspect-ratio: 1/1;
   display: flex;
   justify-content: end;
-  align-items: start;
+  align-items: flex-start;
 }
 #target-dialog.show .close {
   height: 12.6%;
@@ -116,7 +117,23 @@ body {
   flex-wrap: wrap;
 }
 
-#inventory-dialog {
+#overlay {
+  display: none;
+}
+#overlay.show {
+  display: block;
+  z-index: 2;
+  position: fixed;
+  background: white;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.inventory-dialog {
+  z-index: 3;
   background: rgb(237, 27, 46);
   background: linear-gradient(146deg, rgb(237, 27, 46) 0%, rgb(255, 82, 99) 95%);
   color: white;
@@ -125,20 +142,21 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1rem;
+  border-radius: 4px;
   display: none;
 }
-#inventory-dialog.show {
+.inventory-dialog.show {
   display: grid;
   grid-template-areas: ". . close" "item item item" "minus quantity plus" "submit submit submit";
   grid-template-columns: 1fr min-content 1fr;
   justify-content: center;
   align-content: center;
 }
-#inventory-dialog.show .close {
+.inventory-dialog.show .close {
   grid-area: close;
   justify-self: end;
 }
-#inventory-dialog.show .selection {
+.inventory-dialog.show .selection {
   padding: 0.3rem;
   margin: 0.3rem;
   grid-area: item;
@@ -146,23 +164,23 @@ body {
   justify-content: center;
   cursor: default;
 }
-#inventory-dialog.show #minus {
+.inventory-dialog.show .minus {
   grid-area: minus;
 }
-#inventory-dialog.show .quantity {
+.inventory-dialog.show .quantity {
   grid-area: quantity;
 }
-#inventory-dialog.show #plus {
+.inventory-dialog.show .plus {
   grid-area: plus;
 }
-#inventory-dialog.show .submit-btn {
+.inventory-dialog.show .submit-btn {
   display: block;
   grid-area: submit;
   border: 0.13rem solid white;
   color: white;
   margin: 25px 0px;
 }
-#inventory-dialog.show .out {
+.inventory-dialog.show .out {
   display: none;
 }
 
@@ -191,7 +209,7 @@ button {
   transition: 100ms;
 }
 
-#plus, #minus {
+.plus, .minus {
   width: calc(25px + 0.6rem);
   display: flex;
   align-items: center;

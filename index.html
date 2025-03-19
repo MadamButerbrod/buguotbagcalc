@@ -11,7 +11,7 @@
 <body>
   <div id="target-container">
     <div id="target-dialog">
-      <img src="/images/close.svg" alt="x" class="close">
+      <img src="/images/close.svg" alt="x" class="close exit">
     </div>
     <div id="target">
       <div id="weight-counter">
@@ -33,16 +33,23 @@
   <div id="inventory" class="item-list out">
     <p class="item" id="compass70" data-weight="70">🧭 kompasas (70g)</p>
   </div>
-  <div id="inventory-dialog">
-    <img src="/images/close.svg" alt="x" class="close">
-    <p class="selection" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
-    <button id="minus"><img src="/images/minus.svg" alt="-"></button>
+  <div id="overlay">
+  </div>
+  <div class="inventory-dialog get-in">
+    <img src="/images/close.svg" alt="x" class="close exit">
+    <div class="selection"></div>
+    <button class="minus"><img src="/images/minus.svg" alt="-"></button>
     <input type="number" name="quantity" class="quantity" placeholder="0">
-    <button id="plus"><img src="/images/plus.svg" alt="+"></button>
-    <button class="submit-btn">
-      <p class="dialog-type in">Perkelti į kuprinę</p>
-      <p class="dialog-type out">Išimti iš kuprinės</p>
-    </button>
+    <button class="plus"><img src="/images/plus.svg" alt="+"></button>
+    <button class="submit-btn get-in exit">Perkelti į kuprinę</button>
+  </div>
+  <div class="inventory-dialog get-out">
+    <img src="/images/close.svg" alt="x" class="close exit">
+    <p class="selection" id="candy" data-weight="10">🍬 ledinukas (10g)</p>
+    <button class="minus"><img src="/images/minus.svg" alt="-"></button>
+    <input type="number" name="quantity" class="quantity" placeholder="0">
+    <button class="plus"><img src="/images/plus.svg" alt="+"></button>
+    <button class="submit-btn get-out exit">Išimti iš kuprinės</button>
   </div>
 </body>
 </html>
