@@ -116,6 +116,13 @@ body {
   align-content: flex-start;
   flex-wrap: wrap;
 }
+#inventory.show .item {
+  flex: 1 1 50%;
+}
+#inventory.show .count {
+  padding: 0.3rem;
+  margin: 0.3rem;
+}
 
 #overlay {
   display: none;
