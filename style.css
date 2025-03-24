@@ -32,7 +32,7 @@ body {
 }
 #target-dialog.show {
   position: absolute;
-  background-image: url("/images/inventory-dialog.svg");
+  background-image: url("images/inventory-dialog.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -52,7 +52,7 @@ body {
   z-index: 1;
   height: 62%;
   aspect-ratio: 25/39;
-  background-image: url("/images/backpack.svg");
+  background-image: url("images/backpack.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -79,6 +79,11 @@ body {
 }
 #weight-counter.show-inventory {
   display: none;
+}
+
+#curr-capacity {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .separator {
@@ -139,7 +144,7 @@ body {
   width: 100%;
 }
 
-.inventory-dialog {
+.init-dialog, .inventory-dialog {
   z-index: 3;
   background: rgb(237, 27, 46);
   background: linear-gradient(146deg, rgb(237, 27, 46) 0%, rgb(255, 82, 99) 95%);
@@ -152,12 +157,36 @@ body {
   border-radius: 4px;
   display: none;
 }
+
+.init-dialog.show {
+  display: grid;
+  grid-template-areas: "label label label" ". weighti ." "submit submit submit";
+  grid-template-columns: 1fr min-content 1fr;
+}
+.init-dialog.show .weight-label {
+  grid-area: label;
+}
+.init-dialog.show .weight-input {
+  grid-area: weighti;
+}
+.init-dialog.show .init-submit {
+  grid-area: submit;
+}
+
 .inventory-dialog.show {
   display: grid;
-  grid-template-areas: ". . close" "item item item" "minus quantity plus" "submit submit submit";
+  grid-template-areas: "err err close" "item item item" "minus quantity plus" "submit submit submit";
   grid-template-columns: 1fr min-content 1fr;
   justify-content: center;
   align-content: center;
+}
+.inventory-dialog.show .err {
+  grid-area: err;
+  display: none;
+}
+.inventory-dialog.show .err.show {
+  display: block;
+  padding-right: 5%;
 }
 .inventory-dialog.show .close {
   grid-area: close;
@@ -181,11 +210,7 @@ body {
   grid-area: plus;
 }
 .inventory-dialog.show .submit-btn {
-  display: block;
   grid-area: submit;
-  border: 0.13rem solid white;
-  color: white;
-  margin: 25px 0px;
 }
 .inventory-dialog.show .out {
   display: none;
@@ -221,4 +246,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.submit-btn, .init-submit {
+  display: block;
+  border: 0.13rem solid white;
+  color: white;
+  margin: 25px 0px;
 }/*# sourceMappingURL=style.css.map */

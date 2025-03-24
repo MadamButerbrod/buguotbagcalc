@@ -1,5 +1,6 @@
 class inventory {
-    constructor () {
+    constructor (capacity) {
+        this.capacity = capacity;
         this.inventory = [];
     }
     /**
@@ -12,6 +13,20 @@ class inventory {
     }
     get inTrans () {
         return this._inTransition
+    }
+    get CurrQuantity () {
+        if(this._indexInInventory != -1) {return this.inventory[this._indexInInventory].quantity}
+        else {return 0}
+    }
+    get weight () {
+        let _weight = 0
+        this.inventory.forEach((c)=>{
+            _weight += c.item.data('weight')*c.quantity
+        })
+        return _weight
+    }
+    get currCap () {
+        return this.capacity-this.weight
     }
     /**
      * add new item to inventory
@@ -46,10 +61,6 @@ class inventory {
             }
 
     }
-    getCurrQuantity () {
-        if(this._indexInInventory != -1) {return this.inventory[this._indexInInventory].quantity}
-        else {return 0}
-    }
 }
 function show (block) {
     if (!(block.hasClass('show'))) {
@@ -61,27 +72,57 @@ function hide (block) {
         block.removeClass('show');
     }
 }
+currCapKg = () => inv.currCap/1000;
 
-let inv = new inventory();
+let inv = new inventory(0);
 $(function(){
+    $('.init-submit').on('click', function () {
+        let par = $(this).parent();
+        if($('.weight-input').val() > 0) {
+            inv.capacity=$('.weight-input').val()*1000;
+            $('#curr-capacity').text(currCapKg);
+            hide($('#overlay'));
+            hide(par);
+        }
+    })
+    $('#curr-capacity').text(currCapKg);
     $('body').on('click', '.item', function () {
         inv.inTrans = $(this).clone();
-        let par = $(this).parent()
+        let par = $(this).parent();
+        $('.quantity').val(1);
         if (par.attr('id')=='source') {
             show($('.inventory-dialog.get-in'));
         } else if (par.attr('id')=='inventory') {
             show($('.inventory-dialog.get-out'));
-            $('.quantity').val(inv.getCurrQuantity())
         }
         let selection = inv.inTrans.clone().removeClass('item');
         selection.appendTo($('.selection'));
         show($('#overlay'));
     });
+    $('.minus').on('click', function () {
+        let inval = $('.quantity').val()
+        if (inval > 0) $('.quantity').val(inval-1);
+    })
+    $('.plus').on('click', function () {
+        let inval = $('.quantity').val()
+        $('.quantity').val(Number(inval)+1);
+    })
     $('.submit-btn').on('click', function () {
         let it = inv.inTrans;
-        let qua = $(this).siblings('.quantity').val();
-        inv.addItem(it, Number(qua));
-        console.log(inv.inventory);
+        let qua = Number($(this).siblings('.quantity').val());
+        if (inv.currCap-(qua*inv.inTrans.data('weight')) > 0) {
+            let par = $(this).parent();
+            qua = par.hasClass('get-out') ? -qua : qua;
+            inv.addItem(it, qua);
+            hide(par);
+            hide($('#overlay'));
+            hide($('.err'));
+            $('.selection').empty();
+            $('#curr-capacity').text(currCapKg);
+        }
+        else {
+            show($('.err'));
+        }
     });
     $('#target').on('click', function () {
         hide($('#source'));
@@ -96,6 +137,7 @@ $(function(){
             show($('#source'));
         } else if (par.hasClass('inventory-dialog')) {
             hide($('#overlay'));
+            hide($('.err'));
             $('.selection').empty();
         }
     })

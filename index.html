@@ -11,13 +11,13 @@
 <body>
   <div id="target-container">
     <div id="target-dialog">
-      <img src="/images/close.svg" alt="x" class="close exit">
+      <img src="images/close.svg" alt="x" class="close exit">
     </div>
     <div id="target">
       <div id="weight-counter">
         <p>
           liko <br>
-          18,232 <br>
+          <span id="curr-capacity"></span><br>
           kg
         </p>
       </div>
@@ -34,23 +34,29 @@
   </div>
   <div id="inventory" class="item-list out">
   </div>
-  <div id="overlay">
+  <div id="overlay" class="show">
+  </div>
+  <div class="init-dialog show">
+    <label for="weight-input" class="weight-label">Įveskite pageidaujamą kuprinės svorį kilogramais. Kuprinės svoris neturėtų viršyti 20 proc. jūsų svorio.</label>
+    <input type="number" name="weight-input" class="weight-input">
+    <button class="init-submit">Pradėti</button>
   </div>
   <div class="inventory-dialog get-in">
-    <img src="/images/close.svg" alt="x" class="close exit">
+    <div class="err">Priemonės netelpa, atlaisvinkite vietos.</div>
+    <img src="images/close.svg" alt="x" class="close exit">
     <div class="selection"></div>
-    <button class="minus"><img src="/images/minus.svg" alt="-"></button>
-    <input type="number" name="quantity" class="quantity" placeholder="0">
-    <button class="plus"><img src="/images/plus.svg" alt="+"></button>
-    <button class="submit-btn get-in exit">Perkelti į kuprinę</button>
+    <button class="minus"><img src="images/minus.svg" alt="-"></button>
+    <input type="number" name="quantity" class="quantity">
+    <button class="plus"><img src="images/plus.svg" alt="+"></button>
+    <button class="submit-btn get-in">Perkelti į kuprinę</button>
   </div>
   <div class="inventory-dialog get-out">
-    <img src="/images/close.svg" alt="x" class="close exit">
+    <img src="images/close.svg" alt="x" class="close exit">
     <div class="selection"></div>
-    <button class="minus"><img src="/images/minus.svg" alt="-"></button>
-    <input type="number" name="quantity" class="quantity" placeholder="0">
-    <button class="plus"><img src="/images/plus.svg" alt="+"></button>
-    <button class="submit-btn get-out exit">Išimti iš kuprinės</button>
+    <button class="minus"><img src="images/minus.svg" alt="-"></button>
+    <input type="number" name="quantity" class="quantity">
+    <button class="plus"><img src="images/plus.svg" alt="+"></button>
+    <button class="submit-btn get-out">Išimti iš kuprinės</button>
   </div>
   <script src="script.js"></script>
 </body>

@@ -41,7 +41,7 @@ body {
     display: none;
     &.show {
         position: absolute;
-        background-image: url('/images/inventory-dialog.svg');
+        background-image: url('images/inventory-dialog.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -61,7 +61,7 @@ body {
     z-index: 1;
     height: 62%;
     aspect-ratio: 25/39;
-    background-image: url('/images/backpack.svg');
+    background-image: url('images/backpack.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -87,6 +87,10 @@ body {
     &.show-inventory {
         display: none;
     }
+}
+#curr-capacity {
+    font-size: inherit;
+    line-height: inherit;
 }
 .separator {
     border-top: solid #6d6e70 1px;
@@ -138,7 +142,7 @@ body {
         width: 100%;
     }
 }
-.inventory-dialog {
+.init-dialog,.inventory-dialog{
     z-index: 3;
     background: rgb(237,27,46);
     background: linear-gradient(146deg, rgba(237,27,46,1) 0%, rgba(255,82,99,1) 95%); 
@@ -150,14 +154,44 @@ body {
     padding: 1rem;
     border-radius: 4px;
     display: none;
+}
+.init-dialog {
     &.show {
         display: grid;
         grid-template-areas: 
-            ". . close"
+            "label label label"
+            ". weighti ."
+            "submit submit submit";
+        grid-template-columns: 1fr min-content 1fr;
+        .weight-label {
+            grid-area: label;
+        }
+        .weight-input {
+            grid-area: weighti;
+        }
+        .init-submit {
+            grid-area: submit;
+        }
+    }   
+}
+.inventory-dialog {
+    &.show {
+        display: grid;
+        grid-template-areas: 
+            "err err close"
             "item item item"
             "minus quantity plus"
             "submit submit submit";
         grid-template-columns: 1fr min-content 1fr;
+        .err {
+            grid-area: err;
+            display: none;
+            &.show {
+                display: block;
+                padding-right: 5%;
+
+            }
+        }
         .close {
             grid-area: close;
             justify-self: end;
@@ -179,10 +213,8 @@ body {
             grid-area: plus;
         }
         .submit-btn {
-            display: block;
             grid-area: submit;
-            @include txt-btn;
-            margin: 25px 0px;
+
         }
         justify-content: center;
         align-content: center;
@@ -191,7 +223,6 @@ body {
         }
     }
 }
-
 label {
     display: block;
     @include basic-pad;
@@ -213,4 +244,9 @@ button {
 }
 .plus, .minus {
     @include ico-btn;
+}
+.submit-btn,.init-submit{
+    display: block;
+    @include txt-btn;
+    margin: 25px 0px;
 }
