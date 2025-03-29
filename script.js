@@ -108,9 +108,10 @@ $(function(){
         $('.quantity').val(Number(inval)+1);
     })
     $('.submit-btn').on('click', function () {
+        console.log('clicked');
         let it = inv.inTrans;
         let qua = Number($(this).siblings('.quantity').val());
-        if (inv.currCap-(qua*inv.inTrans.data('weight')) > 0) {
+        if (inv.currCap-(qua*inv.inTrans.data('weight')) >= 0) {
             let par = $(this).parent();
             qua = par.hasClass('get-out') ? -qua : qua;
             inv.addItem(it, qua);
